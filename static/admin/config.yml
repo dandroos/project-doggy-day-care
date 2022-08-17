@@ -1,0 +1,77 @@
+local_backend: true
+backend:
+  name: git-gateway
+  branch: master
+media_folder: content/site_images
+collections:
+  - label: Pages 
+    name: content
+    media_folder: ./site_images
+    public_folder: site_images
+    editor:
+      preview: false
+    files:
+      - label: Homepage
+        name: homepage
+        file: content/home.md
+        fields:
+          - label: Images (Landscape)
+            name: homepage_images_landscape
+            hint: Will typically show on desktop devices
+            widget: list
+            collapsed: false
+            minimize_collapsed: true
+            fields:
+              - label: Image
+                name: image
+                widget: image
+          - label: Images (Portrait)
+            name: homepage_images_portrait
+            hint: Will typically show on mobile devices
+            widget: list
+            collapsed: false
+            minimize_collapsed: true
+            fields:
+              - label: Image
+                name: image
+                widget: image
+          - label: Heading
+            name: homepage_heading
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Lead
+            name: homepage_lead
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Call to Action (CTA) for dogs 
+            name: homepage_cta_dogs
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Call to Action (CTA) for cats 
+            name: homepage_cta_cats
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
