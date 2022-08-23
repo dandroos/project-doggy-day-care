@@ -6,7 +6,7 @@ module.exports = {
     description: `El mejor destino de vacaciones en Fuerteventura para tus perros y gatos.`,
     supportedLanguages: ["es", "en", "de"],
     // author: `@dandrewsdeveloper`,
-    siteUrl: `https://mygatsbystarter.com/`,
+    siteUrl: `https://manohecha.netlify.app/`,
     title1: `Manohecha`,
     title2: `Hotel Canino y Felino`,
   },

@@ -44,10 +44,10 @@ const BookingForm = ({ language }) => {
       email: fields.email,
       phone: fields.phone,
       address: fields.address,
-      from: fields.dateFrom,
-      to: fields.dateTo,
-      drop_off_time: fields.timeDropOff,
-      pick_up_time: fields.timePickUp,
+      from: moment(fields.dateFrom).format("dddd Do MMMM YYYY"),
+      to: moment(fields.dateTo).format("dddd Do MMMM YYYY"),
+      drop_off_time: moment(fields.timeDropOff).format("hh:mm"),
+      pick_up_time: moment(fields.timePickUp).format("hh:mm"),
       comments: fields.comments,
     }
     for (let i = 1; i < 7; i++) {
