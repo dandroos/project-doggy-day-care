@@ -162,6 +162,7 @@ const BookingForm = ({ language }) => {
                 <TextField
                   multiline
                   minRows={4}
+                  name="comments"
                   value={fields.comments}
                   onChange={handleChange}
                   label={text.comments[language]}
@@ -174,6 +175,7 @@ const BookingForm = ({ language }) => {
                   startIcon={<Check />}
                   fullWidth
                   type="submit"
+                  disabled={fields.pets.length === 0}
                 >
                   {text.proceed[language]}
                 </Button>
