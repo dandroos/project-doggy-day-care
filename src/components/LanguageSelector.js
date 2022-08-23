@@ -16,8 +16,10 @@ const LanguageSelector = ({ location, language }) => {
   const langRedirector = useLangRedirect()
   const handleClose = () => setAnchorEl(null)
   const handleClick = ({ currentTarget }) => {
+    const l = currentTarget.id.replace("lang-", "")
+    localStorage.setItem("manohecha_def_lang", l)
     langRedirector.redirect({
-      language: currentTarget.id.replace("lang-", ""),
+      language: l,
       pageId: location,
     })
     return handleClose()
@@ -40,6 +42,7 @@ const LanguageSelector = ({ location, language }) => {
             }
           })()}
           svg
+          style={{ boxShadow: `.1rem .1rem .2rem black`, height: "auto" }}
         />
       </IconButton>
       <Menu open={Boolean(anchorEl)} onClose={handleClose} anchorEl={anchorEl}>

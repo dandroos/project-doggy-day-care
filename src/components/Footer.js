@@ -8,7 +8,7 @@ import {
 } from "@mui/material"
 
 import Address from "./Address"
-import FooterContact from "./FooterContact"
+import ContactList from "./ContactList"
 import Hours from "./Hours"
 import LocationMap from "./LocationMap"
 import React from "react"
@@ -48,7 +48,7 @@ const Footer = ({ language }) => {
         <Grid container spacing={3} alignItems="center">
           <Grid item xs={12} md={6}>
             <Address />
-            <FooterContact />
+            <ContactList />
             <Hours />
           </Grid>
           <Grid item xs={12} md={6}>

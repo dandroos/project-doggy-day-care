@@ -6,6 +6,7 @@ import { setAtTop, setIsMobile, setPageTransitioning } from "../redux/actions"
 import Footer from "./Footer"
 import MobileMenu from "./MobileMenu"
 import Navigation from "./Navigation"
+import Toast from "./Toast"
 import { connect } from "react-redux"
 
 const Layout = ({ dispatch, location, children }) => {
@@ -20,11 +21,13 @@ const Layout = ({ dispatch, location, children }) => {
     document.addEventListener("scroll", () => {
       dispatch(setAtTop(window.scrollY === 0))
     })
+    dispatch(setAtTop(window.scrollY === 0))
     //eslint-disable-next-line
   }, [])
 
   return (
     <>
+      <Toast />
       <MobileMenu />
       <Navigation />
       <Box sx={{ overflow: "hidden" }}>
@@ -34,14 +37,16 @@ const Layout = ({ dispatch, location, children }) => {
             initial={{ transform: `translateY(800px)`, opacity: 0 }}
             animate={{ transform: `translateY(0px)`, opacity: 1 }}
             exit={{ transform: `translateY(800px)`, opacity: 0 }}
-            transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
+            transition={{ type: "tween", duration: 0.3 }}
             onAnimationStart={(e) => {
               if (e.opacity !== 1) {
                 dispatch(setPageTransitioning(true))
               }
             }}
             onAnimationComplete={(e) => {
-              dispatch(setPageTransitioning(false))
+              if (e.opacity === 1) {
+                dispatch(setPageTransitioning(false))
+              }
             }}
           >
             <Box

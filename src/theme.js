@@ -94,9 +94,26 @@ export const theme = responsiveFontSizes(
           },
         },
       },
+      MuiFormLabel: {
+        defaultProps: {
+          color: "secondary",
+        },
+      },
+      MuiSelect: {
+        defaultProps: {
+          color: "secondary",
+        },
+      },
+
+      MuiRadio: {
+        defaultProps: {
+          color: "secondary",
+        },
+      },
       MuiTextField: {
         defaultProps: {
           fullWidth: true,
+          color: "secondary",
           required: true,
           InputLabelProps: {
             required: false,

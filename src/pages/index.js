@@ -1,14 +1,17 @@
-import HeadComponent from "../components/Head"
-import React from "react"
-import { Typography } from "@mui/material"
-import { connect } from "react-redux"
+import React, { useEffect } from "react"
 
-const Index = ({ isMobile }) => {
-  return (
-    <Typography>
-      You're viewing the {isMobile ? `mobile` : `desktop`} version.
-    </Typography>
-  )
+import HeadComponent from "../components/Head"
+import { connect } from "react-redux"
+import { useLangRedirect } from "../hooks/useLangRedirect"
+
+const Index = () => {
+  const useRedirect = useLangRedirect()
+  useEffect(() => {
+    const detectedLanguage = useRedirect.detect()
+    useRedirect.redirect({ language: detectedLanguage, pageId: "home" })
+    //eslint-disable-next-line
+  }, [])
+  return null
 }
 
 const stp = (s) => ({
