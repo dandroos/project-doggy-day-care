@@ -50,7 +50,7 @@ const Homepage = ({ dispatch, pageContext, data, isMobile }) => {
         <Box
           position="absolute"
           zIndex={6000}
-          bottom={isMobile ? 5 : 20}
+          bottom={20}
           //   width="100%"
           left={isMobile ? undefined : 20}
           //   textAlign="center"
