@@ -3,6 +3,7 @@ import { setLanguage, setLocation } from "../redux/actions"
 
 import ContactForm from "../components/ContactForm"
 import ContactList from "../components/ContactList"
+import HeadComponent from "../components/Head"
 import PageWrapper from "../components/PageWrapper"
 import { Typography } from "@mui/material"
 import { connect } from "react-redux"
@@ -29,6 +30,10 @@ const Contact = ({ dispatch, pageContext, data }) => {
 }
 
 export default connect()(Contact)
+
+export const Head = ({ pageContext }) => (
+  <HeadComponent title={pageContext.title} />
+)
 
 export const query = graphql`
   {
