@@ -1,14 +1,14 @@
 ---
 homepage_images_landscape:
-  - image: site_images/mano1.jpg
-  - image: site_images/mano2.jpg
-  - image: site_images/mano3.jpg
-  - image: site_images/mano4.jpg
+  - image: site_images/img_20210811_155146-01.jpeg
+  - image: site_images/img_20210821_094314-02.jpeg
+  - image: site_images/img_20210704_091612-02.jpeg
+  - image: site_images/img_20210730_132219-01.jpeg
 homepage_images_portrait:
-  - image: site_images/mano1.jpg
-  - image: site_images/mano3.jpg
-  - image: site_images/mano2.jpg
-  - image: site_images/mano4.jpg
+  - image: site_images/img_20200112_110743-01.jpeg
+  - image: site_images/img_20200208_160949-01.jpeg
+  - image: site_images/img_20210703_094421-01.jpeg
+  - image: site_images/img_20200223_095610-01.jpeg
 homepage_heading:
   en: Your pet's favourite holiday destination!
   es: ¡El destino de vacaciones favorito de su mascota!

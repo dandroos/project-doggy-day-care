@@ -1,5 +1,6 @@
 import {
   SET_AT_TOP,
+  SET_BOOKING_FORM,
   SET_IS_MOBILE,
   SET_LANGUAGE,
   SET_LOCATION,
@@ -46,5 +47,10 @@ export const setLanguage = (payload) => ({
 
 export const setPageTransitioning = (payload) => ({
   type: SET_PAGE_TRANSITIONING,
+  payload,
+})
+
+export const setBookingForm = (payload) => ({
+  type: SET_BOOKING_FORM,
   payload,
 })

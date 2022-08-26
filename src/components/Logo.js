@@ -11,6 +11,7 @@ const Logo = ({ isMobile }) => {
     <Box textAlign="center">
       <StaticImage
         src="../images/logo-without-text2.png"
+        alt="Manohecha logo"
         width={180}
         placeholder="none"
       />

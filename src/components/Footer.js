@@ -6,6 +6,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material"
+import { graphql, useStaticQuery } from "gatsby"
 
 import Address from "./Address"
 import ContactList from "./ContactList"
@@ -27,13 +28,25 @@ const Footer = ({ language }) => {
   }
   const { title } = useSiteMetadata()
   const theme = useTheme()
-  const text = {
-    allContent: {
-      en: "All content ",
-      es: "Todo el contenido ",
-      de: "Alle inhalte ",
-    },
-  }
+  const { all_content } = useStaticQuery(graphql`
+    {
+      file(
+        sourceInstanceName: { eq: "content" }
+        name: { eq: "dictionary" }
+        extension: { eq: "md" }
+      ) {
+        childMarkdownRemark {
+          frontmatter {
+            all_content {
+              en
+              es
+              de
+            }
+          }
+        }
+      }
+    }
+  `).file.childMarkdownRemark.frontmatter
   return (
     <Box
       textAlign="center"
@@ -57,7 +70,7 @@ const Footer = ({ language }) => {
         </Grid>
         <Divider sx={{ my: 2 }} />
         <Typography variant="caption">
-          {text.allContent[language]} &copy; {getCopyrightYear()} {title}
+          {all_content[language] + ` `} &copy; {getCopyrightYear()} {title}
         </Typography>
         <SiteCredit />
       </Container>

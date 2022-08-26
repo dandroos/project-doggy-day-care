@@ -1,48 +1,79 @@
 import { Button, Grid, TextField, Typography } from "@mui/material"
 import React, { useState } from "react"
+import { graphql, useStaticQuery } from "gatsby"
 
 import { Send } from "mdi-material-ui"
 import { connect } from "react-redux"
 import { setToast } from "../redux/actions"
 
 const ContactForm = ({ dispatch, language }) => {
-  const text = {
-    useTheForm: {
-      en: "You can also use the form below to send us a message",
-      es: "También puede utilizar el siguiente formulario para enviarnos un mensaje",
-      de: "Sie können auch das folgende Formular verwenden, um uns eine Nachricht zu senden",
-    },
-    name: {
-      en: "Name",
-      es: "Nombre",
-      de: "Name",
-    },
-    phone: {
-      en: "Phone",
-      es: "Teléfono",
-      de: "Telefon",
-    },
-    message: {
-      en: "Message",
-      es: "Mensaje",
-      de: "Nachricht",
-    },
-    send: {
-      en: "Send",
-      es: "Enviar",
-      de: "Senden",
-    },
-    messageSent: {
-      en: "Thank you for your message.  We will respond as soon as possible.",
-      es: "Gracias por tu mensaje. Responderemos lo antes posible.",
-      de: "Danke für deine Nachricht. Wir werden so schnell wie möglich antworten.",
-    },
-    messageNotSent: {
-      en: "Apologies. There was a problem sending your message. Please try again in a moment.",
-      es: "Disculpas. Hubo un problema al enviar su mensaje. Vuelva a intentarlo en un momento.",
-      de: "Entschuldigung. Beim Senden Ihrer Nachricht ist ein Problem aufgetreten. Bitte versuchen Sie es gleich noch einmal.",
-    },
-  }
+  const { content, dictionary } = useStaticQuery(graphql`
+    {
+      content: file(
+        sourceInstanceName: { eq: "content" }
+        name: { eq: "contactpage" }
+        extension: { eq: "md" }
+      ) {
+        childMarkdownRemark {
+          frontmatter {
+            form_intro {
+              en
+              es
+              de
+            }
+            message_success {
+              en
+              es
+              de
+            }
+            message_fail {
+              en
+              es
+              de
+            }
+          }
+        }
+      }
+      dictionary: file(
+        sourceInstanceName: { eq: "content" }
+        name: { eq: "dictionary" }
+        extension: { eq: "md" }
+      ) {
+        childMarkdownRemark {
+          frontmatter {
+            name {
+              en
+              es
+              de
+            }
+            phone {
+              en
+              es
+              de
+            }
+            message {
+              en
+              es
+              de
+            }
+            send {
+              en
+              es
+              de
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const text = Object.assign(
+    {},
+    {
+      ...content.childMarkdownRemark.frontmatter,
+      ...dictionary.childMarkdownRemark.frontmatter,
+    }
+  )
 
   const [fields, setFields] = useState({
     name: "",
@@ -81,7 +112,7 @@ const ContactForm = ({ dispatch, language }) => {
         dispatch(
           setToast({
             open: true,
-            msg: text.messageSent[language],
+            msg: text.message_success[language],
             severity: "success",
           })
         )
@@ -96,7 +127,7 @@ const ContactForm = ({ dispatch, language }) => {
         dispatch(
           setToast({
             open: true,
-            msg: text.messageNotSent[language],
+            msg: text.message_fail[language],
             severity: "error",
           })
         )
@@ -113,7 +144,7 @@ const ContactForm = ({ dispatch, language }) => {
     >
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography gutterBottom>{text.useTheForm[language]}...</Typography>
+          <Typography gutterBottom>{text.form_intro[language]}...</Typography>
         </Grid>
         <Grid item xs={12} md={4}>
           <TextField

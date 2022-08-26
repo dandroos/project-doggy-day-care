@@ -75,3 +75,605 @@ collections:
                 name: es
               - label: Deutsch
                 name: de
+      - label: Dogs
+        name: dogs
+        file: content/dogs.md
+        fields:
+          - label: Price per day
+            name: price
+          - label: Banner image
+            name: featured_image
+            widget: image
+          - label: Text
+            name: text
+            widget: object
+            fields:
+              - label: English
+                name: en
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+              - label: Español              
+                name: es
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+              - label: Deutsch
+                name: de
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+      - label: Cats 
+        name: cats
+        file: content/cats.md
+        fields:
+          - label: Price per day
+            name: price
+          - label: Banner image
+            name: featured_image
+            widget: image
+          - label: Text
+            name: text
+            widget: object
+            fields:
+              - label: English
+                name: en
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+              - label: Español              
+                name: es
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+              - label: Deutsch
+                name: de
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+      - label: Services 
+        name: services
+        file: content/services.md
+        fields:
+          - label: Banner image
+            name: featured_image
+            widget: image
+          - label: Text
+            name: text
+            widget: object
+            fields:
+              - label: English
+                name: en
+                widget: markdown 
+                buttons: ["heading-one", "bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+              - label: Español              
+                name: es
+                widget: markdown 
+                buttons: ["heading-one", "bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+              - label: Deutsch
+                name: de
+                widget: markdown 
+                buttons: ["heading-one", "bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+      - label: About 
+        name: about
+        file: content/about.md
+        fields:
+          - label: Banner image
+            name: featured_image
+            widget: image
+          - label: Text
+            name: text
+            widget: object
+            fields:
+              - label: English
+                name: en
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+              - label: Español              
+                name: es
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+              - label: Deutsch
+                name: de
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+      - label: Book now! 
+        name: book
+        file: content/book.md
+        fields:
+          - label: Banner image
+            name: featured_image
+            widget: image
+          - label: Text
+            name: text
+            widget: object
+            fields:
+              - label: English
+                name: en
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+              - label: Español              
+                name: es
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+              - label: Deutsch
+                name: de
+                widget: markdown 
+                buttons: ["bold", "italic", "bulleted-list"]
+                editor_components: []
+                modes: ["rich_text"]
+  - label: Other 
+    name: other
+    media_folder: ./site_images
+    public_folder: site_images
+    editor:
+      preview: false
+    files:
+      - label: Dictionary
+        name: dictionary
+        file: content/dictionary.md
+        fields:
+          - label: Add pet
+            name: add_pet
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Address
+            name: address
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: All content
+            name: all_content
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Booking form
+            name: booking_form 
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Breed
+            name: breed
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Call us
+            name: call_us
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Cancel
+            name: cancel
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Cat
+            name: cat
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Comments
+            name: comments
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Complimentary bath
+            name: complimentary_bath
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Contact us
+            name: contact_us
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Dog
+            name: dog
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Drop off
+            name: drop_off
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: End date
+            name: end_date
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Every day
+            name: every_day
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: For more info
+            name: for_more_information
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: I will supply
+            name: i_will_supply
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Make a reservation
+            name: make_a_reservation
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Message
+            name: message
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Name
+            name: name
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Name of pet
+            name: name_of_pet
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: No
+            name: no
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Not important
+            name: not_important
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Only
+            name: only
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Opening hours
+            name: opening_hours
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Other
+            name: other
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Per day
+            name: per_day
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Pet
+            name: pet
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Pet details
+            name: pet_details
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Phone
+            name: phone
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Pick up
+            name: pick_up
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Preferred food
+            name: preferred_food
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Proceed
+            name: proceed
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Send
+            name: send
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Site by
+            name: site_by
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Start date
+            name: start_date
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Trip details
+            name: trip_details
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Yes
+            name: yes
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+          - label: Your details
+            name: your_details
+            widget: object
+            fields:
+              - label: English
+                name: en
+              - label: Español              
+                name: es
+              - label: Deutsch
+                name: de
+      - label: Contact and Social
+        name: contact_and_social
+        file: content/contact.md
+        fields:
+          - label: Phone number (English only)
+            name: phone_number_en
+          - label: Phone number (English and Spanish)
+            name: phone_number_es
+          - label: Email address
+            name: email_address
+          - label: Facebook username
+            name: facebook
+      - label: Location and Schedule
+        name: location_and_schedule
+        file: content/location.md
+        fields:
+          - label: Address
+            name: address
+          - label: GPS Coordinates
+            name: gps
+            widget: object
+            fields:
+              - label: Latitude
+                name: latitude
+              - label: Longitude
+                name: longitude
+          - label: Opening hours
+            name: opening_hours
+            widget: object
+            fields:
+              - label: Morning/Afternoon
+                name: morning_afternoon
+                widget: object
+                fields:
+                  - label: Start
+                    name: start
+                    hint: Type 4 digit time without colon. e.g. 0900
+                  - label: Finish
+                    name: finish
+                    hint: Type 4 digit time without colon. e.g. 0900
+              - label: Afternoon/Evening
+                name: afternoon_evening
+                widget: object
+                fields:
+                  - label: Start
+                    name: start
+                    hint: Type 4 digit time without colon. e.g. 0900
+                  - label: Finish
+                    name: finish
+                    hint: Type 4 digit time without colon. e.g. 0900
+
+

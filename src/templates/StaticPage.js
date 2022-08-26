@@ -1,19 +1,12 @@
-import {
-  Alert,
-  Box,
-  Button,
-  Divider,
-  Link as MLink,
-  Typography,
-} from "@mui/material"
+import { Alert, Box, Button, Link as MLink, Typography } from "@mui/material"
+import { Calendar, Phone } from "mdi-material-ui"
 import { Link, graphql } from "gatsby"
 import React, { useEffect } from "react"
-import { setLanguage, setLocation } from "../redux/actions"
+import { setBookingForm, setLanguage, setLocation } from "../redux/actions"
 
 import BookingForm from "../components/BookingForm"
 import HeadComponent from "../components/Head"
 import PageWrapper from "../components/PageWrapper"
-import { Phone } from "mdi-material-ui"
 import ReactMarkdown from "react-markdown"
 import { connect } from "react-redux"
 import { internal } from "../siteLinks"
@@ -25,51 +18,26 @@ const StaticPage = ({ dispatch, data, pageContext }) => {
     dispatch(setLocation(linkId))
     //eslint-disable-next-line
   }, [])
-  const fm = Object.assign({}, data.markdownRemark.frontmatter)
-  const text = {
-    forMoreInfo: {
-      en: "For more information...",
-      es: "Para más información...",
-      de: "Für mehr Informationen...",
-    },
-    contactUs: {
-      en: "Contact us",
-      es: "Contáctenos",
-      de: "Kontaktiere uns",
-    },
-    only: {
-      en: "Only",
-      es: "Solo",
-      de: "Nur",
-    },
-    perDay: {
-      en: "per day",
-      es: "por día",
-      de: "pro Tag",
-    },
-    makeReservation: {
-      en: "Make a reservation now!",
-      es: "¡Haz una reserva ahora!",
-      de: "Reservieren Sie jetzt!",
-    },
-    pleaseRead: {
-      en: "Please read the information below before making a reservation.",
-      es: "Por favor, lea la información a continuación antes de hacer una reserva.",
-      de: "Bitte lesen Sie die folgenden Informationen, bevor Sie eine Reservierung vornehmen.",
-    },
-    takeMeToForm: {
-      en: `"I have already read the information. Please take me to the form."`,
-      es: `"Ya he leído la información. Por favor, llévame al formulario."`,
-      de: `"Ich habe die Informationen bereits gelesen. Bitte bringen Sie mich zum Formular."`,
-    },
-  }
+
+  const fm = Object.assign({}, data.main.frontmatter)
+  const text = Object.assign(
+    {},
+    {
+      ...data.dictionary.childMarkdownRemark.frontmatter,
+      ...data.content.childMarkdownRemark.frontmatter,
+    }
+  )
   return (
     <PageWrapper image={fm.featured_image} title={title}>
       {linkId === "booking" && (
-        <Alert variant="outlined" severity="info" sx={{ mt: 2 }}>
-          {text.pleaseRead[language]}
-          <MLink color="secondary" display="block" href="#booking-form">
-            {text.takeMeToForm[language]}
+        <Alert variant="outlined" severity="info" sx={{ my: 2 }}>
+          {text.before_booking[language]}
+          <MLink
+            color="secondary"
+            display="block"
+            onClick={() => dispatch(setBookingForm({ open: true }))}
+          >
+            "{text.take_me_to_form[language]}"
           </MLink>
         </Alert>
       )}
@@ -85,7 +53,7 @@ const StaticPage = ({ dispatch, data, pageContext }) => {
           <Typography variant="button" fontWeight="bold">
             {text.only[language]}
             {` `}
-            {fm.price}€ {text.perDay[language]}
+            {fm.price}€ {text.per_day[language]}
           </Typography>
         </Box>
       )}
@@ -118,7 +86,7 @@ const StaticPage = ({ dispatch, data, pageContext }) => {
       {linkId !== "booking" ? (
         <Box textAlign="center">
           <Typography variant="caption" display="block">
-            {text.forMoreInfo[language]}
+            {text.for_more_information[language]}...
           </Typography>
           <Button
             variant="contained"
@@ -130,12 +98,19 @@ const StaticPage = ({ dispatch, data, pageContext }) => {
               internal.filter((i) => i.id === "contact")[0].url[language]
             }`}
           >
-            {text.contactUs[language]}
+            {text.contact_us[language]}
           </Button>
         </Box>
       ) : (
         <>
-          <Divider sx={{ my: 4 }} id="booking-form" />
+          <Button
+            variant="contained"
+            onClick={() => dispatch(setBookingForm({ open: true }))}
+            startIcon={<Calendar />}
+            fullWidth
+          >
+            {text.make_a_reservation[language]}
+          </Button>
           <BookingForm />
         </>
       )}
@@ -155,7 +130,7 @@ export const Head = ({ pageContext }) => (
 
 export const query = graphql`
   query ($id: String) {
-    markdownRemark(id: { eq: $id }) {
+    main: markdownRemark(id: { eq: $id }) {
       frontmatter {
         featured_image {
           childImageSharp {
@@ -172,6 +147,61 @@ export const query = graphql`
           de
         }
         price
+      }
+    }
+    content: file(
+      sourceInstanceName: { eq: "content" }
+      name: { eq: "book" }
+      extension: { eq: "md" }
+    ) {
+      childMarkdownRemark {
+        frontmatter {
+          before_booking {
+            en
+            es
+            de
+          }
+          take_me_to_form {
+            en
+            es
+            de
+          }
+        }
+      }
+    }
+    dictionary: file(
+      sourceInstanceName: { eq: "content" }
+      name: { eq: "dictionary" }
+      extension: { eq: "md" }
+    ) {
+      childMarkdownRemark {
+        frontmatter {
+          for_more_information {
+            en
+            es
+            de
+          }
+          contact_us {
+            en
+            es
+            de
+          }
+          only {
+            en
+            es
+            de
+          }
+          per_day {
+            en
+            es
+            de
+          }
+          make_a_reservation {
+            en
+            es
+            de
+          }
+        }
       }
     }
   }

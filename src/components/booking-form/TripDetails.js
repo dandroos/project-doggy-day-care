@@ -1,46 +1,63 @@
 import { DatePicker, TimePicker } from "@mui/x-date-pickers"
 import { Grid, TextField, Typography } from "@mui/material"
+import { graphql, useStaticQuery } from "gatsby"
 
 import React from "react"
 import { connect } from "react-redux"
 import moment from "moment"
 
 const TripDetails = ({ fields, setFields, language }) => {
-  const text = {
-    tripDetails: {
-      en: "Trip details",
-      es: "Detalles del viaje",
-      de: "Reisedetails",
-    },
-    startDate: {
-      en: "Start date",
-      es: "Fecha de inicio",
-      de: "Anfangsdatum",
-    },
-    endDate: {
-      en: "End date",
-      es: "Fecha final",
-      de: "Endtermin",
-    },
-    dropOff: {
-      en: "Drop off time",
-      es: "Hora de entrega",
-      de: "Abholzeit",
-    },
-    pickUp: {
-      en: "Pick up time",
-      es: "Hora de recogida",
-      de: "Sammelzeit",
-    },
-  }
+  const text = Object.assign(
+    {},
+    useStaticQuery(graphql`
+      {
+        file(
+          sourceInstanceName: { eq: "content" }
+          name: { eq: "dictionary" }
+          extension: { eq: "md" }
+        ) {
+          childMarkdownRemark {
+            frontmatter {
+              trip_details {
+                en
+                es
+                de
+              }
+              start_date {
+                en
+                es
+                de
+              }
+              end_date {
+                en
+                es
+                de
+              }
+              drop_off {
+                en
+                es
+                de
+              }
+              pick_up {
+                en
+                es
+                de
+              }
+            }
+          }
+        }
+      }
+    `).file.childMarkdownRemark.frontmatter
+  )
+
   return (
     <>
       <Grid item xs={12}>
-        <Typography variant="h6">{text.tripDetails[language]}</Typography>
+        <Typography variant="h6">{text.trip_details[language]}</Typography>
       </Grid>
       <Grid item xs={12} md={6}>
         <DatePicker
-          label={text.startDate[language]}
+          label={text.start_date[language]}
           inputFormat="DD/MM/yyyy"
           value={fields.dateFrom}
           renderInput={(params) => <TextField {...params} />}
@@ -51,7 +68,7 @@ const TripDetails = ({ fields, setFields, language }) => {
       <Grid item xs={12} md={6}>
         <TimePicker
           ampm
-          label={text.dropOff[language]}
+          label={text.drop_off[language]}
           shouldDisableTime={(timeValue, clockType) => {
             switch (clockType) {
               case "hours":
@@ -78,7 +95,7 @@ const TripDetails = ({ fields, setFields, language }) => {
       </Grid>
       <Grid item xs={12} md={6}>
         <DatePicker
-          label={text.endDate[language]}
+          label={text.end_date[language]}
           inputFormat="DD/MM/yyyy"
           value={fields.dateTo}
           renderInput={(params) => <TextField {...params} />}
@@ -88,7 +105,7 @@ const TripDetails = ({ fields, setFields, language }) => {
       </Grid>
       <Grid item xs={12} md={6}>
         <TimePicker
-          label={text.pickUp[language]}
+          label={text.pick_up[language]}
           ampm
           shouldDisableTime={(timeValue, clockType) => {
             switch (clockType) {

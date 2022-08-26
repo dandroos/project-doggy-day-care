@@ -15,88 +15,99 @@ import {
   Typography,
 } from "@mui/material"
 import { Delete, Paw } from "mdi-material-ui"
+import { graphql, useStaticQuery } from "gatsby"
 
 import React from "react"
 import { connect } from "react-redux"
 
 const PetDetails = ({ fields, setFields, language }) => {
-  const text = {
-    petDetails: {
-      en: "Pet details",
-      es: "Detalles de la mascota",
-      de: "Haustierdetails",
-    },
-    toContinue: {
-      en: "Please add a pet to continue",
-      es: "Agrega una mascota para continuar",
-      de: "Bitte fügen Sie ein Haustier hinzu, um fortzufahren",
-    },
-    pet: {
-      en: "Pet",
-      es: "Mascota",
-      de: "Haustier",
-    },
-    nameOfPet: {
-      en: "Name of pet",
-      es: "Nombre de la mascota",
-      de: "Name des Haustieres",
-    },
-    breed: {
-      en: "Breed",
-      es: "Raza",
-      de: "Die Zucht",
-    },
-    preferredFood: {
-      en: "Preferred food",
-      es: "Comida preferida",
-      de: "Bevorzugtes Essen",
-    },
-    dog: {
-      en: "Dog",
-      es: "Perro",
-      de: "Hund",
-    },
-    cat: {
-      en: "Cat",
-      es: "Gato",
-      de: "Katze",
-    },
-    notImportant: {
-      en: "Not important",
-      es: "No importante",
-      de: "Nicht wichtig",
-    },
-    iWillSupply: {
-      en: `"I will supply"`,
-      es: `"Voy a suministrar"`,
-      de: `"Ich werde liefern"`,
-    },
-    other: {
-      en: "Other (please specify in comments)",
-      es: "Otro (especifique en los comentarios)",
-      de: "Sonstiges (bitte bei Bemerkungen angeben)",
-    },
-    complimentaryBath: {
-      en: "Complimentary bath",
-      es: "Baño de cortesía",
-      de: "Kostenloses Bad",
-    },
-    yes: {
-      en: "Yes",
-      es: "Sí",
-      de: "Ja",
-    },
-    no: {
-      en: "No",
-      es: "No",
-      de: "Nein",
-    },
-    addPet: {
-      en: "Add pet",
-      es: "Añadir mascota",
-      de: "Haustier hinzufügen",
-    },
-  }
+  const text = Object.assign(
+    {},
+    useStaticQuery(graphql`
+      {
+        file(
+          sourceInstanceName: { eq: "content" }
+          name: { eq: "dictionary" }
+          extension: { eq: "md" }
+        ) {
+          childMarkdownRemark {
+            frontmatter {
+              pet_details {
+                en
+                es
+                de
+              }
+              pet {
+                en
+                es
+                de
+              }
+              name_of_pet {
+                en
+                es
+                de
+              }
+              breed {
+                en
+                es
+                de
+              }
+              preferred_food {
+                en
+                es
+                de
+              }
+              dog {
+                en
+                es
+                de
+              }
+              cat {
+                en
+                es
+                de
+              }
+              not_important {
+                en
+                es
+                de
+              }
+              i_will_supply {
+                en
+                es
+                de
+              }
+              other {
+                en
+                es
+                de
+              }
+              complimentary_bath {
+                en
+                es
+                de
+              }
+              yes {
+                en
+                es
+                de
+              }
+              no {
+                en
+                es
+                de
+              }
+              add_pet {
+                en
+                es
+                de
+              }
+            }
+          }
+        }
+      }
+    `).file.childMarkdownRemark.frontmatter
+  )
   const addPet = () => {
     setFields({
       ...fields,
@@ -114,18 +125,17 @@ const PetDetails = ({ fields, setFields, language }) => {
 
   const AddPetButton = () => (
     <Button variant="contained" startIcon={<Paw />} onClick={addPet}>
-      {text.addPet[language]}
+      {text.add_pet[language]}
     </Button>
   )
   return (
     <>
       <Grid item xs={12}>
-        <Typography variant="h6">{text.petDetails[language]}</Typography>
+        <Typography variant="h6">{text.pet_details[language]}</Typography>
       </Grid>
       {fields.pets.length < 1 ? (
         <Grid item xs={12}>
           <Box textAlign="center">
-            <Typography gutterBottom>{text.toContinue[language]}...</Typography>
             <AddPetButton />
           </Box>
         </Grid>
@@ -147,7 +157,7 @@ const PetDetails = ({ fields, setFields, language }) => {
               })
             }
             return (
-              <>
+              <React.Fragment key={ind}>
                 <Grid item xs={12}>
                   <Divider sx={{ my: 2, mt: ind === 0 ? 0 : undefined }} />
                 </Grid>
@@ -172,7 +182,7 @@ const PetDetails = ({ fields, setFields, language }) => {
                 <Grid item xs={12} md={4}>
                   <TextField
                     name="name"
-                    label={text.nameOfPet[language]}
+                    label={text.name_of_pet[language]}
                     value={i.name}
                     onChange={handlePetChange}
                   />
@@ -215,20 +225,20 @@ const PetDetails = ({ fields, setFields, language }) => {
                 <Grid item xs={12} md={6}>
                   <FormControl fullWidth>
                     <InputLabel id="preferred-food">
-                      {text.preferredFood[language]}
+                      {text.preferred_food[language]}
                     </InputLabel>
                     <Select
                       labelId="preferred-food"
                       name="preferredFood"
                       value={i.preferredFood}
-                      label={text.preferredFood[language]}
+                      label={text.preferred_food[language]}
                       onChange={handlePetChange}
                     >
                       <MenuItem value={0}>
-                        {text.notImportant[language]}
+                        {text.not_important[language]}
                       </MenuItem>
                       <MenuItem value={1}>
-                        {text.iWillSupply[language]}
+                        {text.i_will_supply[language]}
                       </MenuItem>
                       <MenuItem value={2}>Affinity</MenuItem>
                       <MenuItem value={3}>{text.other[language]}</MenuItem>
@@ -238,13 +248,13 @@ const PetDetails = ({ fields, setFields, language }) => {
                 <Grid item xs={12} md={6}>
                   <FormControl fullWidth>
                     <InputLabel id="complimentary-bath">
-                      {text.complimentaryBath[language]}
+                      {text.complimentary_bath[language]}
                     </InputLabel>
                     <Select
                       labelId="complimentary-bath"
                       name="bath"
                       value={i.bath}
-                      label={text.complimentaryBath[language]}
+                      label={text.complimentary_bath[language]}
                       onChange={handlePetChange}
                     >
                       <MenuItem value={0}>{text.yes[language]}</MenuItem>
@@ -257,7 +267,7 @@ const PetDetails = ({ fields, setFields, language }) => {
                     <Divider sx={{ my: 2 }} />
                   </Grid>
                 )}
-              </>
+              </React.Fragment>
             )
           })}
           <Grid item xs={12} sx={{ textAlign: "center" }}>

@@ -16,13 +16,15 @@ export default function LocationMap() {
       ) {
         childMarkdownRemark {
           frontmatter {
-            latitude
-            longitude
+            gps {
+              latitude
+              longitude
+            }
           }
         }
       }
     }
-  `).file.childMarkdownRemark.frontmatter
+  `).file.childMarkdownRemark.frontmatter.gps
   return typeof window !== "undefined" ? (
     <Paper elevation={3}>
       <MapContainer

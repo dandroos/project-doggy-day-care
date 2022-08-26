@@ -5,21 +5,21 @@ import React from "react"
 import { connect } from "react-redux"
 
 const Hours = ({ language }) => {
-  const { openingHours } = useStaticQuery(graphql`
+  const { content, dictionary } = useStaticQuery(graphql`
     {
-      file(
+      content: file(
         sourceInstanceName: { eq: "content" }
         name: { eq: "location" }
         extension: { eq: "md" }
       ) {
         childMarkdownRemark {
           frontmatter {
-            openingHours {
-              morningAfternoon {
+            business_opening_hours {
+              morning_afternoon {
                 start
                 finish
               }
-              afternoonEvening {
+              afternoon_evening {
                 start
                 finish
               }
@@ -27,27 +27,39 @@ const Hours = ({ language }) => {
           }
         }
       }
+      dictionary: file(
+        sourceInstanceName: { eq: "content" }
+        name: { eq: "dictionary" }
+        extension: { eq: "md" }
+      ) {
+        childMarkdownRemark {
+          frontmatter {
+            opening_hours {
+              en
+              es
+              de
+            }
+            every_day {
+              en
+              es
+              de
+            }
+          }
+        }
+      }
     }
-  `).file.childMarkdownRemark.frontmatter
+  `)
 
-  const text = {
-    openingHours: {
-      en: "Opening hours",
-      es: "Horario",
-      de: "Öffnungszeiten",
-    },
-    everyDay: {
-      en: "Every day",
-      es: "Todos los días",
-      de: "Täglich",
-    },
-  }
+  const { business_opening_hours } = content.childMarkdownRemark.frontmatter
+
+  const text = Object.assign({}, dictionary.childMarkdownRemark.frontmatter)
+
   const timeSanitizer = (time) =>
     `${time.substring(time.charAt(0) === "0" ? 1 : 0, 2)}:${time.substring(2)}`
   return (
     <Box mb={2}>
       <Typography variant="h5" gutterBottom>
-        {text.openingHours[language]}
+        {text.opening_hours[language]}
       </Typography>
       <Box
         display="flex"
@@ -57,25 +69,25 @@ const Hours = ({ language }) => {
         maxWidth={350}
         margin="auto"
       >
-        <Typography>{text.everyDay[language]}</Typography>
+        <Typography>{text.every_day[language]}</Typography>
         <Box>
           <Typography
             align="right"
             variant="caption"
             display="block"
           >{`${timeSanitizer(
-            openingHours.morningAfternoon.start
+            business_opening_hours.morning_afternoon.start
           )} - ${timeSanitizer(
-            openingHours.morningAfternoon.finish
+            business_opening_hours.morning_afternoon.finish
           )}`}</Typography>
           <Typography
             align="right"
             variant="caption"
             display="block"
           >{`${timeSanitizer(
-            openingHours.afternoonEvening.start
+            business_opening_hours.afternoon_evening.start
           )} - ${timeSanitizer(
-            openingHours.afternoonEvening.finish
+            business_opening_hours.afternoon_evening.finish
           )}`}</Typography>
         </Box>
       </Box>

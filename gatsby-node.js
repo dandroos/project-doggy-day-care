@@ -32,22 +32,12 @@ exports.createPages = async ({ actions, graphql }) => {
   `)
 
   const data = await runQueries(graphql)
-  console.log(data)
   const { supportedLanguages } = query.data.site.siteMetadata
   const getTitle = (id, language) =>
     internal.filter((i) => i.id === id)[0].label[language]
   const getUrl = (id, language) =>
     internal.filter((i) => i.id === id)[0].url[language]
   supportedLanguages.map((l) => {
-    internal.map((link) =>
-      createPage({
-        path: `/${l + link.url[l]}`,
-        component: path.resolve("src/templates/temp.js"),
-        context: {
-          title: link.label[l],
-        },
-      })
-    )
     data.map((i) =>
       createPage({
         path: `/${l + getUrl(i.linkId, l)}`,
@@ -75,14 +65,6 @@ exports.createPages = async ({ actions, graphql }) => {
         language: l,
       },
     })
-    // createPage({
-    //   path: `/${l + getUrl("dogs", l)}`,
-    //   component: path.resolve("src/templates/Dogs.js"),
-    //   context: {
-    //     language: l,
-    //     title: getTitle("dogs", l),
-    //   },
-    // })
     return
   })
 }

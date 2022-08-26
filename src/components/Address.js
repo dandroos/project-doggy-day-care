@@ -7,12 +7,12 @@ import { connect } from "react-redux"
 import { useSiteMetadata } from "../hooks/useSiteMetadata"
 
 const Address = ({ isMobile }) => {
-  const { address } = useStaticQuery(graphql`
+  const { business_address } = useStaticQuery(graphql`
     {
       file(sourceInstanceName: { eq: "content" }, name: { eq: "location" }) {
         childMarkdownRemark {
           frontmatter {
-            address
+            business_address
           }
         }
       }
@@ -24,6 +24,7 @@ const Address = ({ isMobile }) => {
     <Box py={2}>
       <StaticImage
         src="../images/logo-without-text2.png"
+        alt="Manohecha logo"
         width={180}
         placeholder="none"
       />
@@ -37,7 +38,7 @@ const Address = ({ isMobile }) => {
       >
         {metadata.title2}
       </Typography>
-      <Typography>{address}</Typography>
+      <Typography>{business_address}</Typography>
     </Box>
   )
 }

@@ -1,5 +1,6 @@
 import {
   SET_AT_TOP,
+  SET_BOOKING_FORM,
   SET_IS_MOBILE,
   SET_LANGUAGE,
   SET_LOCATION,
@@ -22,10 +23,13 @@ const initialState = {
     severity: "success",
     msg: "",
   },
+  bookingForm: {
+    open: false,
+  },
 }
 
 export const reducer = (state = initialState, { type, payload }) => {
-  // console.log(type, payload)
+  console.log(type, payload)
   const newState = Object.assign({}, state)
 
   switch (type) {
@@ -52,6 +56,9 @@ export const reducer = (state = initialState, { type, payload }) => {
       break
     case SET_PAGE_TRANSITIONING:
       newState.pageTransitioning = payload
+      break
+    case SET_BOOKING_FORM:
+      newState.bookingForm = payload
       break
     default:
       break

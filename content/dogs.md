@@ -38,7 +38,7 @@ text:
     Al salir de Manohecha su perro puede disfrutar de un baño gratuito.
 
 
-    Proporcionamos pienso de Alta Gama, Affinity, una o dos veces al día, como ustedes deseen. Si su perro requiere una dieta específica díganoslo o traigan su propia comida si asi lo prefieren. Suministramos la gama Affinity y Royal Canin pienso de perros. Dígannos si quieren que compremos una comida de Affinity en particular para la estancia de su mascota, por favor.
+    Proporcionamos pienso de Alta Gama, Affinity, una o dos veces al día, como ustedes deseen. Si su perro requiere una dieta específica díganoslo o traigan su propia comida si asi lo prefieren. Suministramos la gama **Affinity** y **Royal Canin** pienso de perros. Dígannos si quieren que compremos una comida de Affinity en particular para la estancia de su mascota, por favor.
 
 
     El cuidado veterinario día y noche, 7 días de la semana. Si lo desean podemos ofrecer servicios adicionales como baños extras y administración de medicación. Comuniquenos todas las posibles necesidades de su mascota.
@@ -60,7 +60,7 @@ text:
     Wir verwenden nur hochwertiges Qualitätsfutter vom Tophersteller Affinity, ein oder zweimal am Tag, ganz nach Ihren Wünschen. Braucht Ihr Hund eine spezielle Diät können wir das nach Absprache arrangieren oder wenn Sie möchten, bringen Sie das von Ihnen bevorzugte Futter mit.
 
 
-    Wir vertreiben Hundefutter von Affinity und Royal Canin. Sollten Sie für den Aufenthalt Ihres Hundes oder bei Abholung spezielle Futtersorten dieser Hersteller kaufen wollen, sagen Sie uns einfach Bescheid.
+    Wir vertreiben Hundefutter von **Affinity** und **Royal Canin**. Sollten Sie für den Aufenthalt Ihres Hundes oder bei Abholung spezielle Futtersorten dieser Hersteller kaufen wollen, sagen Sie uns einfach Bescheid.
 
 
     Ein Tierarzt steht Tag und Nacht, 7 Tage in der Woche, zur Verfügung. Auf Anfrage bieten wir Ihrem Hund Zusatzleistungen wie z.B. die Verabreichung von Medikamenten oder zusätzliche Bäder. Bitte zögern Sie nicht, uns danach zu fragen.

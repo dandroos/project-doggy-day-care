@@ -1,24 +1,41 @@
 import { Box, Link, Typography } from "@mui/material"
+import { graphql, useStaticQuery } from "gatsby"
 
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 import { connect } from "react-redux"
 
 const SiteCredit = ({ language }) => {
-  const text = {
-    siteBy: {
-      en: "Site by ",
-      es: "Sitio web de ",
-      de: "Webseite von ",
-    },
-  }
+  const { site_by } = useStaticQuery(graphql`
+    {
+      file(
+        sourceInstanceName: { eq: "content" }
+        name: { eq: "dictionary" }
+        extension: { eq: "md" }
+      ) {
+        childMarkdownRemark {
+          frontmatter {
+            site_by {
+              en
+              es
+              de
+            }
+          }
+        }
+      }
+    }
+  `).file.childMarkdownRemark.frontmatter
   return (
     <Box my={2} display="block">
       <Box component="a" href="https://daveandrews.dev" target="_blank">
-        <StaticImage src="../images/dd-light-text.png" width={50} />
+        <StaticImage
+          src="../images/dd-light-text.png"
+          alt="Dave Andrews logo"
+          width={50}
+        />
       </Box>
       <Typography variant="caption" display="block">
-        {text.siteBy[language]}
+        {site_by[language] + ` `}
         <Link
           underline="hover"
           color="inherit"

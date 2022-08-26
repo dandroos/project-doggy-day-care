@@ -19,7 +19,7 @@ text:
     Pienso de Alta Gama será suministrado, una o dos veces al día, como usted desee. Proporcionamos comida de Affinity, un pienso de calidad. Si su gato requiere una dieta especial, podemos acomodarles, y sino, lo puede traer usted mismo si lo prefiere.
 
 
-    Suministramos la gama Affinity y Royal Canin comida de gatos. Dígannos si necesitan un pienso particular de Affinity o Royal Canin para su gato o para cuando vengan a recogerle.
+    Suministramos la gama **Affinity** y **Royal Canin** comida de gatos. Dígannos si necesitan un pienso particular de Affinity o Royal Canin para su gato o para cuando vengan a recogerle.
 
 
     Cuidado veterinario día y noche, 7 días a la semana. Si lo desean podemos ofrecer servicios adicionales como administración de medicación para su gato. Comuníquense con nosotros para cualquier necesidad que tengan.
@@ -40,7 +40,7 @@ text:
     High quality food is provided, once or twice daily as requested. We supply food from the top food manufacturer, Affinity.  Let us know if your cat requires a special diet so this can be accommodated, or you can bring your own food if preferred.
 
 
-    We supply Affinity and Royal Canin cat food. Please let us know if you need to purchase specific Affinity or Royal Canin food for use during your cat’s stay, or for when you collect your cat.
+    We supply **Affinity** and **Royal Canin** cat food. Please let us know if you need to purchase specific Affinity or Royal Canin food for use during your cat’s stay, or for when you collect your cat.
 
 
     Veterinary care is provided day and night, every day of the week. At your request we can offer additional services such as administering medication to your cat. Please feel free to discuss this with us.
@@ -62,7 +62,7 @@ text:
     Selbstverständlich bieten wir Ihrem Liebling qualitativ hochwertiges Futter, je nach Wunsch ein oder zweimal am Tag. Wir vertreiben Katzenfutter von Affinity. Braucht Ihre Katze eine spezielle Diät, so können wir das nach Absprache problemlos arrangieren, und natürlich können Sie auch das von Ihnen bevorzugte Futter mitbringen.
 
 
-    Wir vertreiben Katzenfutter von Affinity und Royal Canin. Möchten Sie für den Aufenthalt Ihres Tieres oder bei Abholung spezielle Futtersorten dieser Hersteller kaufen, sagen Sie uns einfach Bescheid.
+    Wir vertreiben Katzenfutter von **Affinity** und **Royal Canin**. Möchten Sie für den Aufenthalt Ihres Tieres oder bei Abholung spezielle Futtersorten dieser Hersteller kaufen, sagen Sie uns einfach Bescheid.
 
 
     Es steht Tag und Nacht, 7 Tage die Woche, tierärztliche Versorgung zur Verfügung. Auf Anfrage bieten wir Ihrer Katze Zusatzleistungen wie z.B. die Verabreichung von Medikamenten. Bitte zögern Sie nicht, uns danach zu fragen.

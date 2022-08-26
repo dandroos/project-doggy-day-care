@@ -35,13 +35,13 @@ const NetlifyForms = () => {
         <input type="hidden" name="comments" />
         {[1, 2, 3, 4, 5, 6].map((i) => {
           return (
-            <>
+            <React.Fragment key={i}>
               <input type="hidden" name={`pet_${i}_type`} />
               <input type="hidden" name={`pet_${i}_name`} />
               <input type="hidden" name={`pet_${i}_breed`} />
               <input type="hidden" name={`pet_${i}_bath`} />
               <input type="hidden" name={`pet_${i}_preferred_food`} />
-            </>
+            </React.Fragment>
           )
         })}
       </form>

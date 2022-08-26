@@ -22,7 +22,7 @@ import { convertToBgImage } from "gbimage-bridge"
 import { getImage } from "gatsby-plugin-image"
 import { internal } from "../siteLinks"
 
-const Homepage = ({ dispatch, pageContext, data }) => {
+const Homepage = ({ dispatch, pageContext, data, isMobile }) => {
   const { language } = pageContext
   useEffect(() => {
     dispatch(setLocation("home"))
@@ -44,15 +44,15 @@ const Homepage = ({ dispatch, pageContext, data }) => {
           left={0}
           zIndex={300}
           sx={{
-            background: `radial-gradient(${theme.palette.primary.main}99, ${theme.palette.primary.main}ff)`,
+            background: `radial-gradient(${theme.palette.primary.main}77, ${theme.palette.primary.main}ee)`,
           }}
         />
         <Box
           position="absolute"
           zIndex={6000}
-          bottom={20}
+          bottom={isMobile ? 5 : 20}
           //   width="100%"
-          left={20}
+          left={isMobile ? undefined : 20}
           //   textAlign="center"
           py={3}
         >
@@ -144,7 +144,11 @@ const Homepage = ({ dispatch, pageContext, data }) => {
   )
 }
 
-export default connect()(Homepage)
+const stp = (s) => ({
+  isMobile: s.isMobile,
+})
+
+export default connect(stp)(Homepage)
 export const Head = ({ pageContext }) => {
   return <HeadComponent />
 }

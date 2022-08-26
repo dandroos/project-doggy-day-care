@@ -10,11 +10,11 @@ import {
   Slide,
   useTheme,
 } from "@mui/material"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import { external, internal } from "../siteLinks"
 
 import { Close } from "mdi-material-ui"
 import LanguageSelector from "./LanguageSelector"
-import { Link } from "gatsby"
 import Logo from "./Logo"
 import React from "react"
 import { connect } from "react-redux"
@@ -25,6 +25,22 @@ const MobileMenu = ({ dispatch, isOpen, language }) => {
     dispatch(setMobileMenu(false))
   }
   const theme = useTheme()
+
+  const { facebook } = useStaticQuery(graphql`
+    {
+      file(
+        sourceInstanceName: { eq: "content" }
+        name: { eq: "contact" }
+        extension: { eq: "md" }
+      ) {
+        childMarkdownRemark {
+          frontmatter {
+            facebook
+          }
+        }
+      }
+    }
+  `).file.childMarkdownRemark.frontmatter
   return (
     <Portal>
       <Dialog
@@ -48,14 +64,16 @@ const MobileMenu = ({ dispatch, isOpen, language }) => {
           display="flex"
           flexDirection="column"
           alignItems="center"
-          justifyContent="space-around"
+          justifyContent="space-evenly"
+          p={8}
         >
           <Logo />
           <List sx={{ width: "100%", textAlign: "center" }}>
             {internal.map(
-              (i) =>
+              (i, ind) =>
                 i.id !== "home" && (
                   <ListItemButton
+                    key={ind}
                     component={Link}
                     activeStyle={{ fontWeight: "bold" }}
                     to={`/${language + i.url[language]}`}
@@ -64,14 +82,31 @@ const MobileMenu = ({ dispatch, isOpen, language }) => {
                   >
                     <ListItemText
                       primary={i.label[language]}
-                      primaryTypographyProps={{ sx: { fontWeight: "inherit" } }}
+                      primaryTypographyProps={{
+                        variant: "button",
+                        sx: { fontWeight: "inherit" },
+                      }}
                     />
                   </ListItemButton>
                 )
             )}
           </List>
-          {external.map((i) => (
-            <IconButton>
+          {external.map((i, ind) => (
+            <IconButton
+              key={ind}
+              href={`${
+                i.url +
+                (() => {
+                  switch (i.name.toLowerCase()) {
+                    case "facebook":
+                      return facebook
+                    default:
+                      return
+                  }
+                })()
+              }`}
+              target="_blank"
+            >
               <i.Icon />
             </IconButton>
           ))}

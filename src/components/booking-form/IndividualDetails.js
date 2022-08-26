@@ -1,35 +1,51 @@
 import { Grid, TextField, Typography } from "@mui/material"
+import { graphql, useStaticQuery } from "gatsby"
 
 import React from "react"
 import { connect } from "react-redux"
 
 const IndividualDetails = ({ fields, handleChange, language }) => {
-  const text = {
-    yourDetails: {
-      en: "Your details",
-      es: "Tus detalles",
-      de: "Deine Details",
-    },
-    name: {
-      en: "Name",
-      es: "Nombre",
-      de: "Name",
-    },
-    phone: {
-      en: "Phone",
-      es: "Teléfono",
-      de: "Telefon",
-    },
-    address: {
-      en: "Address",
-      es: "Dirección",
-      de: "Adresse",
-    },
-  }
+  const text = Object.assign(
+    {},
+    useStaticQuery(graphql`
+      {
+        file(
+          sourceInstanceName: { eq: "content" }
+          name: { eq: "dictionary" }
+          extension: { eq: "md" }
+        ) {
+          childMarkdownRemark {
+            frontmatter {
+              your_details {
+                en
+                es
+                de
+              }
+              name {
+                en
+                es
+                de
+              }
+              phone {
+                en
+                es
+                de
+              }
+              address {
+                en
+                es
+                de
+              }
+            }
+          }
+        }
+      }
+    `).file.childMarkdownRemark.frontmatter
+  )
   return (
     <>
       <Grid item xs={12}>
-        <Typography variant="h6">{text.yourDetails[language]}</Typography>
+        <Typography variant="h6">{text.your_details[language]}</Typography>
       </Grid>
       <Grid item xs={12} md={4}>
         <TextField

@@ -16,36 +16,47 @@ import { connect } from "react-redux"
 import { internal } from "../siteLinks"
 
 const ContactList = ({ language }) => {
-  const { phoneNumber_en, phoneNumber_es, emailAddress } =
-    useStaticQuery(graphql`
-      {
-        file(
-          sourceInstanceName: { eq: "content" }
-          name: { eq: "contact" }
-          extension: { eq: "md" }
-        ) {
-          childMarkdownRemark {
-            frontmatter {
-              phoneNumber_en
-              phoneNumber_es
-              emailAddress
+  const { content, dictionary } = useStaticQuery(graphql`
+    {
+      content: file(
+        sourceInstanceName: { eq: "content" }
+        name: { eq: "contact" }
+        extension: { eq: "md" }
+      ) {
+        childMarkdownRemark {
+          frontmatter {
+            phone_number_en
+            phone_number_es
+            email_address
+          }
+        }
+      }
+      dictionary: file(
+        sourceInstanceName: { eq: "content" }
+        name: { eq: "dictionary" }
+        extension: { eq: "md" }
+      ) {
+        childMarkdownRemark {
+          frontmatter {
+            call_us {
+              en
+              es
+              de
+            }
+            make_a_reservation {
+              en
+              es
+              de
             }
           }
         }
       }
-    `).file.childMarkdownRemark.frontmatter
-  const text = {
-    callUs: {
-      en: "Call us",
-      es: "Llámanos",
-      de: "Telefon",
-    },
-    makeReservation: {
-      en: "Make a reservation",
-      es: "Hacer una reserva",
-      de: "Eine Reservierung machen",
-    },
-  }
+    }
+  `)
+  const { phone_number_en, phone_number_es, email_address } =
+    content.childMarkdownRemark.frontmatter
+
+  const text = Object.assign({}, dictionary.childMarkdownRemark.frontmatter)
 
   const ContactItem = ({
     reservation,
@@ -76,6 +87,7 @@ const ContactList = ({ language }) => {
               flags.map((i, ind) => (
                 <ReactCountryFlag
                   countryCode={i}
+                  key={ind}
                   svg
                   style={{ marginRight: flags.length - 1 !== ind ? 10 : 0 }}
                 />
@@ -95,30 +107,34 @@ const ContactList = ({ language }) => {
     <Box py={2}>
       <List disablePadding>
         <ContactItem
-          href={`tel:34${phoneNumber_en}`}
+          href={`tel:34${phone_number_en}`}
           Icon={Phone}
-          primary={text.callUs[language]}
-          secondary={`${phoneNumber_en.substring(
+          primary={text.call_us[language]}
+          secondary={`${phone_number_en.substring(
             0,
             3
-          )} ${phoneNumber_en.substring(3, 6)} ${phoneNumber_en.substring(6)}`}
+          )} ${phone_number_en.substring(3, 6)} ${phone_number_en.substring(
+            6
+          )}`}
           flags={["gb"]}
         />
         <ContactItem
-          href={`tel:34${phoneNumber_es}`}
+          href={`tel:34${phone_number_es}`}
           Icon={Phone}
-          primary={text.callUs[language]}
-          secondary={`${phoneNumber_es.substring(
+          primary={text.call_us[language]}
+          secondary={`${phone_number_es.substring(
             0,
             3
-          )} ${phoneNumber_es.substring(3, 6)} ${phoneNumber_es.substring(6)}`}
+          )} ${phone_number_es.substring(3, 6)} ${phone_number_es.substring(
+            6
+          )}`}
           flags={["es", "gb"]}
         />
         <ContactItem
-          href={`mailto:${emailAddress}`}
+          href={`mailto:${email_address}`}
           Icon={Email}
           primary="Email"
-          secondary={emailAddress}
+          secondary={email_address}
         />
         <ContactItem
           reservation
@@ -127,7 +143,7 @@ const ContactList = ({ language }) => {
             internal.filter((i) => i.id === "booking")[0].url[language]
           }`}
           Icon={Calendar}
-          primary={text.makeReservation[language]}
+          primary={text.make_a_reservation[language]}
           secondary={
             internal.filter((i) => i.id === "booking")[0].label[language]
           }

@@ -105,4 +105,20 @@ text:
 
 
     Sie müssen eine Kopie Ihrer NIE für einen Einwohner und Ihren Reisepass für einen Nicht-Resident vorlegen.
+before_booking:
+  en: "Please read the information below before making a reservation."
+  es: "Por favor, lea la información a continuación antes de hacer una reserva."
+  de: "Bitte lesen Sie die folgenden Informationen, bevor Sie eine Reservierung vornehmen."
+take_me_to_form:
+  en: "I have already read the information. Please take me to the form."
+  es: "Ya he leído la información. Por favor llévame al formulario."
+  de: "Ich habe die Informationen bereits gelesen. Bitte bringen Sie mich zum Formular."
+booking_success:
+  en: "Thank you. We have received your reservation request. We will contact you to confirm as soon as possible."
+  es: "Gracias. Hemos recibido su solicitud de reserva. Nos pondremos en contacto contigo para confirmar lo antes posible."
+  de: "Vielen Dank. Wir haben Ihre Reservierungsanfrage erhalten. Wir werden uns so schnell wie möglich mit Ihnen in Verbindung setzen, um dies zu bestätigen."
+booking_fail:
+  en: "Apologies. There was a problem sending your reservation request. Please try again in a moment or call us."
+  es: "Disculpas. Hubo un problema al enviar su solicitud de reserva. Vuelva a intentarlo en un momento o llámenos."
+  de: "Entschuldigung. Beim Senden Ihrer Reservierungsanfrage ist ein Problem aufgetreten. Bitte versuchen Sie es gleich noch einmal oder rufen Sie uns an."
 ---

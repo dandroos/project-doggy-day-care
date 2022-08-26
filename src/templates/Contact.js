@@ -17,18 +17,10 @@ const Contact = ({ dispatch, pageContext, data }) => {
     //eslint-disable-next-line
   }, [])
 
-  const text = {
-    contactMethods: {
-      en: "You can contact us using the following methods",
-      es: "Puede ponerse en contacto con nosotros utilizando los siguientes métodos",
-      de: "Sie können uns über die folgenden Methoden kontaktieren",
-    },
-  }
-
   return (
     <PageWrapper title={title} image={fm.featured_image}>
       <Typography variant="lead" gutterBottom>
-        {text.contactMethods[language]}...
+        {fm.contact_method_intro[language]}...
       </Typography>
       <ContactList />
       <ContactForm />
@@ -57,6 +49,11 @@ export const query = graphql`
             }
           }
           text {
+            en
+            es
+            de
+          }
+          contact_method_intro {
             en
             es
             de

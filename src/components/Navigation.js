@@ -8,10 +8,10 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import { external, internal } from "../siteLinks"
 
 import LanguageSelector from "./LanguageSelector"
-import { Link } from "gatsby"
 import { Menu } from "mdi-material-ui"
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
@@ -27,6 +27,22 @@ const Navigation = ({
   pageTransitioning,
 }) => {
   const { title1, title2 } = useSiteMetadata()
+
+  const { facebook } = useStaticQuery(graphql`
+    {
+      file(
+        sourceInstanceName: { eq: "content" }
+        name: { eq: "contact" }
+        extension: { eq: "md" }
+      ) {
+        childMarkdownRemark {
+          frontmatter {
+            facebook
+          }
+        }
+      }
+    }
+  `).file.childMarkdownRemark.frontmatter
 
   return (
     <Slide in={!pageTransitioning} direction="down">
@@ -45,6 +61,7 @@ const Navigation = ({
             {atTop ? (
               <StaticImage
                 src="../images/logo-without-text3.png"
+                alt="Manohecha logo"
                 width={50}
                 quality={100}
                 placeholder="none"
@@ -52,6 +69,7 @@ const Navigation = ({
             ) : (
               <StaticImage
                 src="../images/logo-without-text3.png"
+                alt="Manohecha logo"
                 width={40}
                 quality={100}
               />
@@ -63,7 +81,7 @@ const Navigation = ({
               justifyContent="center"
               textAlign="center"
             >
-              <Typography variant="h5" mb={-0.6}>
+              <Typography variant="h5" variantMapping={{ h5: "h1" }} mb={-0.6}>
                 {title1}
               </Typography>
               <Typography
@@ -82,6 +100,7 @@ const Navigation = ({
                 (i, ind) =>
                   i.id !== "home" && (
                     <Button
+                      key={ind}
                       variant={i.id === "booking" ? "contained" : "text"}
                       color={i.id === "booking" ? "secondary" : "inherit"}
                       sx={{
@@ -99,7 +118,22 @@ const Navigation = ({
               )}
               <Box>
                 {external.map((i, ind) => (
-                  <IconButton color="inherit">
+                  <IconButton
+                    color="inherit"
+                    key={ind}
+                    href={`${
+                      i.url +
+                      (() => {
+                        switch (i.name.toLowerCase()) {
+                          case "facebook":
+                            return facebook
+                          default:
+                            return
+                        }
+                      })()
+                    }`}
+                    target="_blank"
+                  >
                     <i.Icon />
                   </IconButton>
                 ))}
